@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import "./Input.css";
 import { validate } from "../util/validator";
 const inputReducer = (state, action) => {
@@ -8,7 +8,7 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         value: action.val,
-        isValid: validate(action.value, action.validators),
+        isValid: validate(action.val, action.validators),
       };
     case "TOUCH":
       return { ...state, isTouched: true };
@@ -22,10 +22,16 @@ const Input = (props) => {
     isValid: false,
     isTouched: false,
   }); //second argument is the current/initial state. use reducer return an array with exactly two element
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+  useEffect(() => {
+    onInput(id, value, isValid);
+  }, [id, value, isValid, onInput]);
+
   const changeHandler = (event) => {
     dispatch({
       type: "CHANGE",
-      value: event.target.value,
+      val: event.target.value,
       validators: props.validators,
     });
   };
@@ -48,6 +54,7 @@ const Input = (props) => {
         id={props.id}
         rows={props.rows || 3}
         value={inputState.value}
+        onChange={changeHandler}
         onBlur={touchHandler}
       />
     );

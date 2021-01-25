@@ -4,11 +4,11 @@ const Map = (props) => {
   const mapRef = useRef();
   const { zoom, center } = props;
   useEffect(() => {
-    //     const map = new window.google.maps.Map(mapRef.current, {
-    //       center: center,
-    //       zoom: zoom,
-    //     });
-    //     new window.google.Maps.marker({ position: center, map: map });
+    //   const map = new window.google.maps.Map(mapRef.current, {
+    //     center: center,
+    //     zoom: zoom,
+    //   });
+    //   new window.google.maps.Marker({ position: center, map: map });
   }, []);
 
   return (
