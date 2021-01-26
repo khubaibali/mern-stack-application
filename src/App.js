@@ -10,6 +10,7 @@ import Users from "./users/pages/Users";
 import NewPlaces from "./places/pages/NewPlace";
 import UserPlaces from "./places/pages/UserPlaces";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import UpdatePlace from "./places/pages/UpdatePlace";
 function App() {
   return (
     <Router>
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/places/new">
             <NewPlaces />
+          </Route>
+          <Route path="/places/UpdatePlace/:placeId">
+            <UpdatePlace />
           </Route>
           <Redirect to="/" />
         </Switch>

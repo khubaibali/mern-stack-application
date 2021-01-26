@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import "./Input.css";
-import { validate } from "../util/validator";
+import { validate } from "../../util/validators";
 const inputReducer = (state, action) => {
   //in this function we return new state
   switch (action.type) {
@@ -18,8 +18,8 @@ const inputReducer = (state, action) => {
 };
 const Input = (props) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
-    value: "",
-    isValid: false,
+    value: props.initialValue || "",
+    isValid: props.initialValid || false,
     isTouched: false,
   }); //second argument is the current/initial state. use reducer return an array with exactly two element
   const { id, onInput } = props;
