@@ -3,7 +3,7 @@ import UserList from "../components/UsersList";
 const Users = () => {
   const USER = [
     {
-      id: 1,
+      id: "u1",
       name: "Max Sharz",
       image: "https://source.unsplash.com/random",
       places: 3,
